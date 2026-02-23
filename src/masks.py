@@ -1,5 +1,3 @@
-
-
 def get_mask_card_number(card_number: int | str) -> str:
     """Принимает номер карты и возвращает маску номера ХХХХ ХХ** **** ХХХХ."""
 
