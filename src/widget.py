@@ -1,5 +1,7 @@
 import re
 
+from black.strings import Match
+
 from masks import get_mask_account, get_mask_card_number
 
 
@@ -20,5 +22,5 @@ def get_date(original_date: str) -> str:
     "2024-03-11T02:26:18.671407" и возвращает строку с датой в формате
     "ДД.ММ.ГГГГ" ("11.03.2024")."""
 
-    match = re.search(r"(\d{4})-(\d{2})-(\d{2})", original_date)
+    match: Match[str] | None = re.search(r"(\d{4})-(\d{2})-(\d{2})", original_date)
     return f"{match.group(3)}.{match.group(2)}.{match.group(1)}"
