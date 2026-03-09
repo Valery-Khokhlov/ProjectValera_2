@@ -2,14 +2,19 @@ import pytest
 
 from typing import Dict, List, Union, Tuple
 
+
 @pytest.fixture
-def card_data():
+def card_number() -> List[Tuple[str, str]]:
     return [
-        ('4967396863956970', '4967 39** **** 6970'),
-        ('496ха9686ував970', 'Вы неверно ввели номер карты'),
-        ('496739686395697056557', 'Вы неверно ввели номер карты'),
-        ('4967 3968', 'Вы неверно ввели номер карты'),
-        ('', 'Вы неверно ввели номер карты'),
+        ("1234567812345678", "1234 56** **** 5678"),  # корректный номер
+        ("0000000000000000", "0000 00** **** 0000"),  # все нули
+    ]
+
+@pytest.fixture
+def account_number() -> List[Tuple[str, str]]:
+    return [
+        ("73654108430135874305", "**4305"), # корректный номер
+        ("00000000000000000000", "**0000"), # все нули
     ]
 
 @pytest.fixture
@@ -41,7 +46,7 @@ def account_cards() -> List[Tuple[str, str]]:
     ]
 
 @pytest.fixture
-def date_formats() -> List[Tuple[str, str]]:
+def date_format() -> List[Tuple[str, str]]:
     return [
         ("2024-03-11T02:26:18.671407", "11.03.2024"),
         ("2020-01-01T00:00:00.000000", "01.01.2020"),
