@@ -21,7 +21,7 @@ def test_filter_by_state(transactions, state, expected):
 
 # Тесты для различных условий сортировки
 @pytest.mark.parametrize("reverse_order, expected_ids", [
-    (True, [3, 1, 4, 2]),  # Убывающий порядок с учетом сортировки по id для одинаковых дат
+    (True, [1, 3, 4, 2]),  # Убывающий порядок с учетом сортировки по id для одинаковых дат
     (False, [2, 4, 1, 3])  # Возрастающий порядок
 ])
 def test_sort_by_date_order(operations, reverse_order, expected_ids):

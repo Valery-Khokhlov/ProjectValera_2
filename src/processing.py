@@ -1,3 +1,5 @@
+import re
+
 from typing import Dict, List
 
 
@@ -15,5 +17,9 @@ def sort_by_date(operations: List[Dict], reduce: bool = True) -> List[Dict]:
     Функция, которая принимает список словарей и необязательный параметр, задающий порядок сортировки
     (по умолчанию — убывание) и возвращает новый список, отсортированный по дате
     """
+    for element in operations:
+        if not re.match(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}", element["data"]):
+            raise ValueError("Некорректный формат даты")
+
     sorted_list_of_operations = sorted(operations, key=lambda x: x["date"], reverse=reduce)
     return sorted_list_of_operations
