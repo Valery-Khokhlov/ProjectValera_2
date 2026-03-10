@@ -38,11 +38,11 @@ def operations() -> List[Dict[str, Union[int, str]]]:
 @pytest.fixture
 def account_cards() -> List[Tuple[str, str]]:
     return [
-        ("Visa Platinum 8990922113665229", "Visa Platinum  8990 92** **** 5229"),
-        ("Maestro 1596837868705199", "Maestro  1596 83** **** 5199"),
-        ("MasterCard 7158300734726758", "MasterCard  7158 30** **** 6758"),
-        ("Visa Gold 5999414228426353", "Visa Gold  5999 41** **** 6353"),
-        ("Счет 64686473678894779589", "Счет  **9589")
+        ("Visa Platinum 8990922113665229", "Visa Platinum 8990 92** **** 5229"),
+        ("Maestro 1596837868705199", "Maestro 1596 83** **** 5199"),
+        ("MasterCard 7158300734726758", "MasterCard 7158 30** **** 6758"),
+        ("Visa Gold 5999414228426353", "Visa Gold 5999 41** **** 6353"),
+        ("Счет 64686473678894779589", "Счет **9589")
     ]
 
 @pytest.fixture

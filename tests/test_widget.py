@@ -5,11 +5,11 @@ from src.widget import mask_account_card, get_date
 
 # Параметризация теста для mask_account_card
 @pytest.mark.parametrize("input_data, expected_output", [
-    ("Visa Platinum 8990922113665229", "Visa Platinum  8990 92** **** 5229"),
-    ("Maestro 1596837868705199", "Maestro  1596 83** **** 5199"),
-    ("MasterCard 7158300734726758", "MasterCard  7158 30** **** 6758"),
-    ("Visa Gold 5999414228426353", "Visa Gold  5999 41** **** 6353"),
-    ("Счет 64686473678894779589", "Счет  **9589")
+    ("Visa Platinum 8990922113665229", "Visa Platinum 8990 92** **** 5229"),
+    ("Maestro 1596837868705199", "Maestro 1596 83** **** 5199"),
+    ("MasterCard 7158300734726758", "MasterCard 7158 30** **** 6758"),
+    ("Visa Gold 5999414228426353", "Visa Gold 5999 41** **** 6353"),
+    ("Счет 64686473678894779589", "Счет **9589")
 ])
 
 def test_mask_account_card(input_data: str, expected_output: str) -> None:
