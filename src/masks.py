@@ -3,7 +3,7 @@ def get_mask_card_number(card_number: int | str) -> str:
 
     card_number = str(card_number)
 
-    if len(card_number) != 16:
+    if len(card_number) != 16 or not card_number.isdigit():
         raise ValueError("Номер карты должен содержать 16 цифр.")
     return str(f"{card_number[:4]} {card_number[4:6]}** **** {card_number[-4:]}")
 
@@ -13,6 +13,6 @@ def get_mask_account(account: int | str) -> str:
 
     account = str(account)
 
-    if len(account) != 20:
+    if len(account) != 20 or not account.isdigit():
         raise ValueError("Номер счета должен содержать 20 цифр.")
     return str(f"**{account[-4:]}")
