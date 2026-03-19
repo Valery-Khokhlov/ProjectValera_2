@@ -1,3 +1,5 @@
+from typing import Dict, List, Tuple, Union
+
 import pytest
 
 from src.processing import filter_by_state, sort_by_date
@@ -24,7 +26,7 @@ from src.processing import filter_by_state, sort_by_date
         ("PENDING", []),  # Проверка при отсутствии словарей с указанным статусом
     ],
 )
-def test_filter_by_state(transactions, state, expected):
+def test_filter_by_state(transactions: List[Dict[str, Union[int, str]]], state: str, expected: List[Dict]) -> None:
     result = filter_by_state(transactions, state)
     assert result == expected
 
@@ -37,7 +39,7 @@ def test_filter_by_state(transactions, state, expected):
         (False, [2, 4, 1, 3]),  # Возрастающий порядок
     ],
 )
-def test_sort_by_date_order(operations, reverse_order, expected_ids):
+def test_sort_by_date_order(operations: List[Dict], reverse_order: bool, expected_ids: List[Dict]) -> None:
     sorted_operations = sort_by_date(operations, reverse_order)
     result_ids = [op["id"] for op in sorted_operations]
     assert result_ids == expected_ids
@@ -52,7 +54,7 @@ def test_sort_by_date_order(operations, reverse_order, expected_ids):
         "not-a-date",  # Некорректная строка
     ],
 )
-def test_sort_by_date_invalid_format(operations, invalid_date):
+def test_sort_by_date_invalid_format(operations: List[Dict], invalid_date: str | None) -> None:
     operations_with_invalid_date = operations + [{"id": 6, "date": invalid_date}]
     with pytest.raises(ValueError):
         sort_by_date(operations_with_invalid_date)

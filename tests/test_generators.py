@@ -43,7 +43,7 @@ def test_filter_by_currency(transactions_: List[Dict[str, Any]], currency_code: 
         ([], []),  # Пустой список транзакций
     ],
 )
-def test_transaction_descriptions(transactions_: List[Dict[str, Any]], expected_descriptions: List[str]):
+def test_transaction_descriptions(transactions_: List[Dict[str, Any]], expected_descriptions: List[str]) -> None:
     result = list(transaction_descriptions(transactions_))
     assert result == expected_descriptions
 
@@ -55,6 +55,6 @@ def test_transaction_descriptions(transactions_: List[Dict[str, Any]], expected_
         (5, 5, ["0000 0000 0000 0005"]),
     ],
 )
-def test_card_number_generator(start: int, stop: int, expected: List[str]):
+def test_card_number_generator(start: int, stop: int, expected: List[str]) -> None:
     result = list(card_number_generator(start, stop))
     assert result == expected
