@@ -1,22 +1,16 @@
-from typing import Dict, Any
-
 import os
+from typing import Any, Dict
 
 import requests
-
-import random
-
 from dotenv import load_dotenv
-
-from utils import  read_json_file
-
 
 # Загружаем переменную окружения
 load_dotenv()
 
 API_KEY = os.getenv("API_KEY")
 
-def converting_amount_rubles(transaction: Dict[str, Dict[str, Dict[str, Any]]]) -> float:
+
+def converting_amount_rubles(transaction: Dict[str, Dict[str, Any]]) -> float:
     """
       Принимает на вход транзакцию и возвращает сумму транзакции (amount) в рублях, тип данных — float.
      Если транзакция была в USD или EUR, происходит обращение к внешнему API для получения текущего курса валют
@@ -30,7 +24,7 @@ def converting_amount_rubles(transaction: Dict[str, Dict[str, Dict[str, Any]]]) 
 
     elif code_transaction in ["USD", "EUR"]:
         to = "RUB"
-        from_= code_transaction
+        from_ = code_transaction
         amount = transaction['operationAmount']['amount']
 
         url = f"https://api.apilayer.com/exchangerates_data/convert?to={to}&from={from_}&amount={amount}"
@@ -44,7 +38,8 @@ def converting_amount_rubles(transaction: Dict[str, Dict[str, Dict[str, Any]]]) 
             return float(result['result'])
         except requests.exceptions.HTTPError:
             print("HTTP Error. Please check the URL.")
-            return  0.0
+            return 0.0
         except requests.exceptions.RequestException:
             print("An error occurred. Please try again later.")
             return 0.0
+    return 0.0
