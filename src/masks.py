@@ -1,6 +1,8 @@
 from logging_config import setup_logging
+
 # Импортируем и настраиваем логгер
 logger = setup_logging('masks')
+
 
 def get_mask_card_number(card_number: int | str) -> str:
     """Принимает номер карты и возвращает маску номера ХХХХ ХХ** **** ХХХХ."""
