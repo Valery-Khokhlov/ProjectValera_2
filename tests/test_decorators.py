@@ -2,9 +2,7 @@ import os
 
 import pytest
 
-from  src.decorators import  log
-
-import functools
+from src.decorators import log
 
 
 @log()
@@ -16,7 +14,6 @@ def divide_function_console(x, y):
     (3, 2, "divide_function_console ok"),
     (1, 0, "divide_function_console error: ZeroDivisionError. Inputs: (1, 0), {}")
 ])
-
 def test_log_to_console(capsys, x, y, expected_output):
     if y == 0:
         with pytest.raises(ZeroDivisionError):

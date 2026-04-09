@@ -1,4 +1,4 @@
-from logging_config import setup_logging
+from src.logging_config import setup_logging
 
 # Импортируем и настраиваем логгер
 logger = setup_logging('masks')
